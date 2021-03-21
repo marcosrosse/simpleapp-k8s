@@ -1,6 +1,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
+  namespace: prova
   name: ingress-simpleapp
   annotations:
     # use the shared ingress-nginx
@@ -18,6 +19,7 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
+  namespace: prova
   name: ingress-kibana
   annotations:
     # use the shared ingress-nginx

@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: prova
   name: simpleapp-cm
 data:
   Code: "1337"

@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Service
 metadata:
+  namespace: prova
   labels:
     name: simpleapp-svc
     app: simpleapp
