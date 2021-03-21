@@ -3,15 +3,10 @@ kind: Service
 metadata:
   namespace: prova
   name: simpleapp-svc
-  labels:
-    name: simpleapp-svc
-    app: simpleapp
 spec:
-  ports:
-  - port: 8008
-    protocol: TCP
-    targetPort: 8008
+  type: ClusterIP
   selector:
     app: simpleapp
-status:
-  loadBalancer: {}
+    ports:
+    - port: 8008
+      targetPort: 8008
