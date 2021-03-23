@@ -9,8 +9,6 @@ spec:
     targetPort: 8008
   selector:
     app: simpleapp
-status:
-  loadBalancer: {}
 # ---
 # apiVersion: v1
 # kind: Service

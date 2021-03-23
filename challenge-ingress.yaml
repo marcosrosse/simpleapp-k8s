@@ -1,40 +1,21 @@
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
+  name: simpleapp-prova
   namespace: prova
-  name: ingress-simpleapp
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: addon-http-application-routing
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"   
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+
 spec:
   rules:
-  - host: app.prova
+  - host: app.prova.9217b2b285d84e2c9841.eastus.aksapp.io
     http:
       paths:
-      - path: /code
-        pathType: Prefix
-        backend:
-          service:
-            name: simpleapp-svc
-            port:
-              number: 80
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   namespace: prova
-#   name: ingress-kibana
-#   annotations:
-#     # use the shared ingress-nginx
-#     kubernetes.io/ingress.class: "nginx"
-# spec:
-#   rules:
-#   - host: kibana.prova
-#     http:
-#       paths:
-#       - path: /health
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: kibana
-#             port:
-#               number: 8008
+      - backend:
+          serviceName: simpleapp-svc
+          servicePort: 80
+        path: /
