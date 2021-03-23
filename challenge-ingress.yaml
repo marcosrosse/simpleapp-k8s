@@ -4,38 +4,37 @@ metadata:
   namespace: prova
   name: ingress-simpleapp
   annotations:
-    # use the shared ingress-nginx
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
   - host: app.prova
     http:
       paths:
-      - path: /
+      - path: /code
         pathType: Prefix
         backend:
           service:
-            name: simpleapp
+            name: simpleapp-svc
             port:
-              number: 8008
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  namespace: prova
-  name: ingress-kibana
-  annotations:
-    # use the shared ingress-nginx
-    kubernetes.io/ingress.class: "nginx"
-spec:
-  rules:
-  - host: kibana.prova
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kibana
-            port:
-              number: 8008
+              number: 80
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   namespace: prova
+#   name: ingress-kibana
+#   annotations:
+#     # use the shared ingress-nginx
+#     kubernetes.io/ingress.class: "nginx"
+# spec:
+#   rules:
+#   - host: kibana.prova
+#     http:
+#       paths:
+#       - path: /health
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: kibana
+#             port:
+#               number: 8008

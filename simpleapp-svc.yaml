@@ -4,9 +4,27 @@ metadata:
   namespace: prova
   name: simpleapp-svc
 spec:
-  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8008
   selector:
     app: simpleapp
-    ports:
-    - port: 8008
-      targetPort: 8008
+status:
+  loadBalancer: {}
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   namespace: prova
+#   name: kibana
+#   labels:
+#     name: kibana
+#     app: kibana
+# spec:
+#   ports:
+#   - port: 80
+#     targetPort: 80
+#   selector:
+#     app: kibana
+# status:
+#   loadBalancer: {}
