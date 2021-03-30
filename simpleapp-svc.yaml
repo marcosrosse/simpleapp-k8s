@@ -9,20 +9,18 @@ spec:
     targetPort: 8008
   selector:
     app: simpleapp
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   namespace: prova
-#   name: kibana
-#   labels:
-#     name: kibana
-#     app: kibana
-# spec:
-#   ports:
-#   - port: 80
-#     targetPort: 80
-#   selector:
-#     app: kibana
-# status:
-#   loadBalancer: {}
+---
+ apiVersion: v1
+ kind: Service
+ metadata:
+   namespace: prova
+   name: kibana
+   labels:
+     name: kibana
+     app: kibana
+ spec:
+   ports:
+   - port: 80
+     targetPort: 5601
+   selector:
+     app: quickstart-kb
