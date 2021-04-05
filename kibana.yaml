@@ -2,6 +2,7 @@ apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: kibana
+  namespace: kube-system
 spec:
   version: 7.12.0
   http:
