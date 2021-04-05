@@ -12,7 +12,7 @@ metadata:
 
 spec:
   rules:
-  - host: app.prova.819a517d1a8742b0bd19.eastus.aksapp.io
+  - host: app.prova.7e4cb0fcb41e4dbbb4da.eastus.aksapp.io
     http:
       paths:
       - backend:
@@ -24,7 +24,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: simpleapp-kibana
-  namespace: prova
+  namespace: default
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/ingress.class: addon-http-application-routing
@@ -33,10 +33,9 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: app.kibana.819a517d1a8742b0bd19.eastus.aksapp.io
+  - host: kibana.7e4cb0fcb41e4dbbb4da.eastus.aksapp.io
     http:
       paths:
       - backend:
-          serviceName: kibana
-          servicePort: 80
-        path: /
+          serviceName: kibana-kb-http
+          servicePort: 5601
