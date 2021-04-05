@@ -2,7 +2,7 @@ apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elasticsearch
-  namespace: kube-system
+  namespace: elk
 spec:
   version: 7.12.0
   nodeSets:
