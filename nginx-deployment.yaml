@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deploy
+  namespace: giropops
   annotations:
     co.elastic.logs.json-logging/json.keys_under_root: "true"
     co.elastic.logs.json-logging/json.add_error_key: "true"
@@ -24,16 +25,3 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 5
-            periodSeconds: 3
-            
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 5
-            periodSeconds: 3

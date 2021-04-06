@@ -6,7 +6,7 @@ metadata:
   labels:
     app: simpleapp
 spec:
-  replicas: 5
+  replicas: 2
   selector:
     matchLabels:
       app: simpleapp
@@ -25,16 +25,16 @@ spec:
           - configMapRef:
               name: simpleapp-cm
 
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8008
-            initialDelaySeconds: 5
-            periodSeconds: 3
+          #livenessProbe:
+           # httpGet:
+            #  path: /health
+             # port: 8008
+            #initialDelaySeconds: 5
+            #periodSeconds: 3
             
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8008
-            initialDelaySeconds: 5
-            periodSeconds: 3
+         # readinessProbe:
+          #  httpGet:
+           #   path: /health
+            #  port: 8008
+            #initialDelaySeconds: 5
+            #periodSeconds: 3

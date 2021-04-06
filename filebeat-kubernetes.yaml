@@ -20,15 +20,15 @@ data:
                 logs_path: "/var/log/containers/"
 
     # To enable hints based autodiscover, remove `filebeat.inputs` configuration and uncomment this:
-    #filebeat.autodiscover:
-    #  providers:
-    #    - type: kubernetes
-    #      node: ${NODE_NAME}
-    #      hints.enabled: true
-    #      hints.default_config:
-    #        type: container
-    #        paths:
-    #          - /var/log/containers/*${data.kubernetes.container.id}.log
+    filebeat.autodiscover:
+      providers:
+        - type: kubernetes
+          node: ${NODE_NAME}
+          hints.enabled: true
+          hints.default_config:
+            type: container
+            paths:
+              - /var/log/containers/*${data.kubernetes.container.id}.log
 
     processors:
       - add_cloud_metadata:
@@ -41,8 +41,7 @@ data:
       hosts: ['${ELASTICSEARCH_HOST:elasticsearch}:${ELASTICSEARCH_PORT:9200}']
       username: ${ELASTICSEARCH_USERNAME}
       password: ${ELASTICSEARCH_PASSWORD}
-      ssl.certificate.authorities:
-        - /etc/certificates/ca.crt
+      ssl.certificate_authorities: "/etc/certificates/ca.crt"
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -104,7 +103,7 @@ spec:
           readOnly: true
           subPath: filebeat.yml
         - name: certs
-          mountPath: /etc/certificate/ca.crt
+          mountPath: /etc/certificates/ca.crt
           readOnly: true
           subPath: ca.crt
         - name: data
