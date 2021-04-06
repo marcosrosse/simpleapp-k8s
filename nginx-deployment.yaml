@@ -1,27 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deploy
+  name: random-logger
   namespace: giropops
-  annotations:
-    co.elastic.logs.json-logging/json.keys_under_root: "true"
-    co.elastic.logs.json-logging/json.add_error_key: "true"
-    co.elastic.logs.json-logging/json.message_key: "message"
+  # annotations:
+  #   co.elastic.logs.json-logging/json.keys_under_root: "true"
+  #   co.elastic.logs.json-logging/json.add_error_key: "true"
+  #   co.elastic.logs.json-logging/json.message_key: "message"
   labels:
-    app: nginx
+    app: random-logger
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: nginx
+      app: random-logger
   template:
     metadata:
       labels:
-        app: nginx
+        app: random-logger
     spec:
       containers:
-        - name: nginx
-          image: nginx
+        - name: random-logger
+          image: chentex/random-logger
           imagePullPolicy: Always
-          ports:
-            - containerPort: 80

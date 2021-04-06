@@ -12,7 +12,7 @@ metadata:
 
 spec:
   rules:
-  - host: app.prova.7e4cb0fcb41e4dbbb4da.eastus.aksapp.io
+  - host: app.prova.305931d693844dda86a7.eastus.aksapp.io
     http:
       paths:
       - backend:
@@ -33,7 +33,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: kibana.7e4cb0fcb41e4dbbb4da.eastus.aksapp.io
+  - host: kibana.305931d693844dda86a7.eastus.aksapp.io
     http:
       paths:
       - backend:
