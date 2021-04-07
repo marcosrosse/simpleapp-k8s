@@ -2,13 +2,13 @@ apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: kibana
-  namespace: elk
+  namespace: atp-elk
 spec:
   version: 7.12.0
-  http:
-    service:
-      spec:
-        type: LoadBalancer
   count: 1
   elasticsearchRef:
-    name: elasticsearch
+    name: elastic
+  http:  
+    tls:
+      selfSignedCertificate:
+      disabled: true

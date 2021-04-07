@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,6 +8,7 @@ metadata:
     k8s-app: filebeat
 data:
   filebeat.yml: |-
+  
     filebeat.autodiscover:
       providers:
         - type: kubernetes
@@ -44,3 +46,4 @@ data:
       ssl.certificate_authorities: "/etc/certificates/ca.crt"
       # ssl.certificate: "/etc/pki/client/cert.pem"
       # ssl.key: "/etc/pki/client/cert.key"
+---

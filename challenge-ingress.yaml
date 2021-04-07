@@ -23,14 +23,12 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: simpleapp-kibana
-  namespace: elk
+  name: kibana
+  namespace: atp-elk
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/ingress.class: addon-http-application-routing
     nginx.ingress.kubernetes.io/ssl-redirect: "true"   
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: kibana.305931d693844dda86a7.eastus.aksapp.io
@@ -38,4 +36,4 @@ spec:
       paths:
       - backend:
           serviceName: kibana-kb-http
-          servicePort: 5601
+          servicePort: 80

@@ -11,14 +11,14 @@ data:
     filebeat.autodiscover:
       providers:
         - type: kubernetes
-        templates:
-          - condition:
-              equals:
-                kubernetes.namespace: prova
-            config:
-              - type: container
-                paths:
-                  - /var/log/containers/*-${data.kubernetes.container.id}.log
+          templates:
+            - condition:
+                equals:
+                  kubernetes.namespace: prova
+              config:
+                - type: container
+                  paths:
+                    - /var/log/containers/*-${data.kubernetes.container.id}.log
 
     processors:
       - add_cloud_metadata:
@@ -65,7 +65,7 @@ spec:
         - name: ELASTICSEARCH_USERNAME
           value: elastic
         - name: ELASTICSEARCH_PASSWORD
-          value: gGZ8w58ro2xW043Vxdj8L1K9
+          value: 95n741NmH13f2avt0sknY5Qi
         - name: ELASTIC_CLOUD_ID
           value:
         - name: ELASTIC_CLOUD_AUTH
